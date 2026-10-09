@@ -1,0 +1,36 @@
+<section class="arrivals">
+  <h2 class="arrivals_title">NEW ARRIVALS</h2>
+
+  <div class="arrivals_grid">
+    @for (product of products; track product.id) {
+      <div class="card">
+        <div class="card_image-box">
+          <img [src]="product.image" [alt]="product.title" class="card__image" />
+        </div>
+
+        <h3 class="card_title">{{ product.title }}</h3>
+
+        <div class="card_rating">
+          <div class="card_stars">
+            ★ ★ ★ ★ ★
+          </div>
+          <span class="card_score">{{ product.rating }}/5</span>
+        </div>
+
+        <div class="card_price-box">
+          <span class="card_price">${{ product.price }}</span>
+          @if (product.oldPrice) {
+            <span class="card_old-price">${{ product.oldPrice }}</span>
+          }
+          @if (product.discount) {
+            <span class="card_badge">{{ product.discount }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="arrivals_action">
+    <button class="arrivals_btn-more">View All</button>
+  </div>
+</section>

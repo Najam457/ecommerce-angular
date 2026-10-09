@@ -1,0 +1,188 @@
+.arrivals {
+  padding: 4rem 4rem;
+  width: 100%;
+  border-bottom: 1px solid #e5e7eb;
+
+  &_title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    color: #000000;
+    margin-bottom: 3.5rem;
+  }
+
+  &_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &_action {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_btn-more {
+    background-color: transparent;
+    border: 1px solid #e5e7eb;
+    color: #000000;
+    padding: 0.875rem 3.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #000000;
+      color: #ffffff;
+      border-color: #000000;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  &_image-box {
+    background-color: #f0eeed;
+    border-radius: 1.25rem;
+    height: 298px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  &_image {
+    max-height: 85%;
+    max-width: 85%;
+    object-fit: contain;
+  }
+
+  &_title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.25rem;
+  }
+
+  &_rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &_stars {
+    color: #ffc700;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  &_score {
+    font-size: 0.875rem;
+    color: #000000;
+    font-weight: 400;
+  }
+
+  &_price-box {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  &_price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  &_old-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-decoration: line-through;
+  }
+
+  &_badge {
+    background-color: #ffebeb;
+    color: #ff3333;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+  }
+}
+@media (max-width: 1024px) {
+  .arrivals {
+    padding: 2.5rem 1rem;
+
+    &_title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &_grid {
+      grid-template-columns: repeat(2, 1fr); // 2 cards per row on mobile
+      gap: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &_btn-more {
+      width: 100%; // Full-width button matching screenshot
+      padding: 0.75rem 0;
+    }
+  }
+
+  .card {
+    &_image-box {
+      height: 200px; // Scaled down height for mobile
+      border-radius: 0.875rem;
+    }
+
+    &_title {
+      font-size: 0.875rem;
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &_rating {
+      gap: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    &_stars {
+      font-size: 0.75rem;
+    }
+
+    &_score {
+      font-size: 0.75rem;
+    }
+
+    &_price-box {
+      gap: 0.375rem;
+    }
+
+    &_price {
+      font-size: 1.125rem;
+    }
+
+    &_old-price {
+      font-size: 1.125rem;
+    }
+
+    &_badge {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+    }
+  }
+}

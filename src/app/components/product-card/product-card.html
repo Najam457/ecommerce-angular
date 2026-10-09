@@ -1,0 +1,52 @@
+<a
+  [routerLink]="['/product', product.id]"
+  class="product-card">
+
+  <div class="product-card-image-box">
+    <img
+      [src]="product.image"
+      [alt]="product.title"
+      class="product-card-image" />
+  </div>
+
+  <h3 class="product-card-title">
+    {{ product.title }}
+  </h3>
+
+  <div class="product-card-rating">
+
+    <div class="product-card-stars">
+      ★ ★ ★ ★ ★
+    </div>
+
+    <span class="product-card-score">
+      {{ product.rating }}/5
+    </span>
+
+  </div>
+
+  <div class="product-card-price-box">
+
+    <span class="product-card-price">
+      Rs. {{ product.price | number }}
+    </span>
+
+    @if (product.oldPrice) {
+
+      <span class="product-card-old-price">
+        Rs. {{ product.oldPrice | number }}
+      </span>
+
+    }
+
+    @if (product.discount) {
+
+      <span class="product-card-badge">
+        {{ product.discount }}
+      </span>
+
+    }
+
+  </div>
+
+</a>

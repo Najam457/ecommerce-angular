@@ -1,0 +1,181 @@
+<div class="category-page">
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs">
+    <a routerLink="/">Home</a>
+
+    <span class="breadcrumbs-separator">></span>
+
+    <span class="breadcrumbs-current">
+      {{ categoryTitle }}
+    </span>
+  </nav>
+
+  <div class="category-layout">
+
+    <!-- Filter Sidebar -->
+    <app-category-filter
+      [isOpen]="isFilterOpen"
+      (closeFilter)="toggleFilter()">
+    </app-category-filter>
+
+    <!-- Main Content -->
+    <main class="products-main">
+
+      <!-- Products Header -->
+      <div class="products-header">
+
+        <h1 class="products-title">
+          {{ categoryTitle }}
+        </h1>
+
+        <div class="products-sorting">
+
+          <span class="showing-text">
+            Showing 1-{{ products.length }}
+            of {{ products.length }} Products
+          </span>
+
+          <div class="sort-by">
+
+            <span>
+              Sort by:
+              <strong class="sort-by-val">
+                Most Popular
+              </strong>
+            </span>
+
+            <svg
+              class="icon-chevron-down"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7">
+              </path>
+
+            </svg>
+
+          </div>
+
+          <button
+            class="mobile-filter-trigger"
+            (click)="toggleFilter()">
+
+            <svg
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+              </path>
+
+            </svg>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Products -->
+
+      @if (isLoading) {
+
+        <p>Loading products...</p>
+
+      } @else if (products.length === 0) {
+
+        <p>No products found.</p>
+
+      } @else {
+
+        <div class="products-grid">
+
+          @for (productItem of products; track productItem.id) {
+
+            <app-product-card
+              [product]="productItem">
+            </app-product-card>
+
+          }
+
+        </div>
+
+      }
+
+      <!-- Pagination -->
+
+      <div class="pagination">
+
+        <button class="pagination-btn pagination-prev">
+
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M7 16l-4-4m0 0l4-4m-4 4h18">
+            </path>
+
+          </svg>
+
+          <span>Previous</span>
+
+        </button>
+
+        <div class="pagination-pages">
+
+          <span class="page-number page-number-active">
+            1
+          </span>
+
+          <span class="page-number">
+            2
+          </span>
+
+          <span class="page-number">
+            3
+          </span>
+
+        </div>
+
+        <button class="pagination-btn pagination-next">
+
+          <span>Next</span>
+
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3">
+            </path>
+
+          </svg>
+
+        </button>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</div>

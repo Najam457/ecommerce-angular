@@ -1,0 +1,283 @@
+.footer-container {
+  position: relative;
+  width: 100%;
+  margin-top: 10rem;
+}
+
+.newsletter {
+  position: absolute;
+  top: -8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1240px;
+  background-color: #000000;
+  border-radius: 1.25rem;
+  padding: 2.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  z-index: 10;
+
+  &_title {
+    color: #ffffff;
+    font-size: 2.25rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    width: 100%;
+    max-width: 350px;
+  }
+
+  &_input-group {
+    position: relative;
+    width: 100%;
+  }
+
+  &_icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #9ca3af;
+  }
+
+  &_input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    border-radius: 9999px;
+    border: none;
+    outline: none;
+    font-size: 0.875rem;
+    color: #000000;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+
+  &_btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 9999px;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #e5e7eb;
+    }
+  }
+}
+
+.footer {
+  background-color: #f0f0f0;
+  padding: 10rem 4rem 2rem;
+  width: 100%;
+
+  &_content {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &_brand {
+    max-width: 250px;
+  }
+
+  &_logo {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+  }
+
+  &_description {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  &_socials {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &_links-grid {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_column {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 0.875rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #000000;
+      }
+    }
+  }
+
+  &_heading {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #000000;
+    margin-bottom: 1.5rem;
+  }
+
+  &_bottom {
+    max-width: 1240px;
+    margin: 1.5rem auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_copyright {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &_payments {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.social-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  &-active {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+  }
+}
+
+.pay-badge {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  border: 1px solid #e5e7eb;
+
+  &-visa { color: #1a1f71; }
+  &-paypal { color: #003087; }
+  &-apple { color: #000000; }
+  &-gpay { color: #5f6368; }
+
+  &-mc {
+    position: relative;
+    width: 32px;
+
+    .mc-red, .mc-yellow {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .mc-red { background-color: #eb001b; margin-right: -4px; }
+    .mc-yellow { background-color: #f79e1b; opacity: 0.9; }
+  }
+}
+@media (max-width: 1024px) {
+  .footer-container {
+    margin-top: 12rem;
+  }
+
+  .newsletter {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    top: -10rem;
+    text-align: center;
+
+    &_title {
+      font-size: 1.75rem;
+    }
+
+    &_form {
+      max-width: 100%;
+    }
+  }
+
+  .footer {
+    padding: 12rem 1.5rem 2rem;
+
+    &_content {
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    &_brand {
+      max-width: 100%;
+    }
+
+    &_links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); // 2 columns for footer links on tablet/mobile
+      gap: 2rem;
+    }
+
+    &_bottom {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+}

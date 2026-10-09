@@ -1,0 +1,39 @@
+<section class="testimonials">
+  <div class="testimonials_header">
+    <h2 class="testimonials_title">OUR HAPPY CUSTOMERS</h2>
+    
+    <div class="testimonials_arrows">
+      <button class="arrow-btn" aria-label="Previous review">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+      </button>
+      <button class="arrow-btn" aria-label="Next review">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="testimonials_grid">
+    @for (review of reviews; track review.id) {
+      <div class="review-card">
+        <div class="review-card_stars">★ ★ ★ ★ ★</div>
+        
+        <div class="review-card_user">
+          <span class="review-card_name">{{ review.name }}</span>
+          @if (review.verified) {
+            <span class="review-card_badge" title="Verified Customer">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </span>
+          }
+        </div>
+
+        <p class="review-card_text">{{ review.comment }}</p>
+      </div>
+    }
+  </div>
+</section>

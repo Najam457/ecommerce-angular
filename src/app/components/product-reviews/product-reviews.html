@@ -1,0 +1,99 @@
+<div class="reviews-section">
+  <!-- Navigation Tabs -->
+  <div class="tabs-header">
+    <button 
+      class="tab-btn" 
+      [class.tab-btn-active]="activeTab === 'details'"
+      (click)="selectTab('details')">
+      Product Details
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.tab-btn-active]="activeTab === 'reviews'"
+      (click)="selectTab('reviews')">
+      Rating & Reviews
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.tab-btn-active]="activeTab === 'faqs'"
+      (click)="selectTab('faqs')">
+      FAQs
+    </button>
+  </div>
+
+  <!-- Tab Content: Rating & Reviews -->
+  @if (activeTab === 'reviews') {
+    <div class="tab-content">
+      
+      <!-- Top Action Bar -->
+      <div class="reviews-bar">
+        <div class="reviews-title-wrap">
+          <h2 class="reviews-title">All Reviews</h2>
+          <span class="reviews-count">(451)</span>
+        </div>
+
+        <div class="reviews-actions">
+          <!-- Filter Button -->
+          <button class="action-btn icon-only-btn" aria-label="Filter reviews">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+            </svg>
+          </button>
+
+          <!-- Sort Select Dropdown -->
+          <div class="select-wrapper">
+            <select class="sort-select">
+              <option value="latest">Latest</option>
+              <option value="oldest">Oldest</option>
+              <option value="highest">Highest Rating</option>
+            </select>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </div>
+
+          <!-- Write a Review Button -->
+          <button class="write-review-btn">Write a Review</button>
+        </div>
+      </div>
+
+      <!-- Reviews 2-Column Grid -->
+      <div class="reviews-grid">
+        @for (item of reviews; track item.id) {
+          <div class="review-card">
+            
+            <div class="review-card-header">
+              <div class="stars">★ ★ ★ ★ ★</div>
+              <button class="more-btn" aria-label="More options">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6 12a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="author-row">
+              <span class="author-name">{{ item.author }}</span>
+              @if (item.verified) {
+                <span class="verified-badge">
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                </span>
+              }
+            </div>
+
+            <p class="comment-text">{{ item.comment }}</p>
+
+            <span class="date-text">{{ item.date }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-wrap">
+        <button class="load-more-btn">Load More Reviews</button>
+      </div>
+
+    </div>
+  }
+</div>

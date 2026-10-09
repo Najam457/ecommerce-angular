@@ -1,0 +1,131 @@
+<div class="product-page">
+  @if (isLoading) {
+    <!-- Loading State -->
+    <div class="loading-state">
+      <p>Loading product details...</p>
+    </div>
+  } @else if (product) {
+    <!-- Breadcrumbs Navigation -->
+    <nav class="breadcrumbs">
+      <a routerLink="/">Home</a>
+      <span class="breadcrumbs-separator">></span>
+      <a routerLink="/category/casual">Shop</a>
+      <span class="breadcrumbs-separator">></span>
+      <span class="breadcrumbs-current">{{ product.title }}</span>
+    </nav>
+
+    <!-- Main Product Container -->
+    <div class="product-container">
+      
+      <!-- Gallery Column (Left) -->
+      <div class="gallery">
+        <div class="gallery-thumbnails">
+          @for (img of images; track $index) {
+            <button 
+              class="gallery-thumb" 
+              [class.gallery-thumb-active]="selectedImage === img"
+              (click)="selectImage(img)">
+              <img [src]="img" [alt]="product.title" />
+            </button>
+          }
+        </div>
+
+        <div class="gallery-main">
+          <img [src]="selectedImage" [alt]="product.title" />
+        </div>
+      </div>
+
+      <!-- Product Info Column (Right) -->
+      <div class="details">
+        <h1 class="details-title">{{ product.title }}</h1>
+
+        <div class="details-rating">
+          <div class="details-stars">★ ★ ★ ★ ★</div>
+          <span class="details-score">{{ product.rating }}/5</span>
+        </div>
+
+        <div class="details-price-box">
+          <span class="details-price">${{ product.price }}</span>
+          @if (product.oldPrice) {
+            <span class="details-old-price">${{ product.oldPrice }}</span>
+          }
+          @if (product.discount) {
+            <span class="details-badge">{{ product.discount }}</span>
+          }
+        </div>
+
+        <p class="details-description">
+          This graphic t-shirt is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and effortless daily style.
+        </p>
+
+        <div class="details-divider"></div>
+
+        <!-- Select Colors -->
+        <div class="details-section">
+          <label class="details-label">Select Colors</label>
+          <div class="details-colors">
+            @for (color of colors; track color) {
+              <button 
+                class="color-btn" 
+                [style.background-color]="color"
+                [class.color-btn-active]="selectedColor === color"
+                (click)="selectColor(color)">
+                @if (selectedColor === color) {
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                }
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="details-divider"></div>
+
+        <!-- Choose Size -->
+        <div class="details-section">
+          <label class="details-label">Choose Size</label>
+          <div class="details-sizes">
+            @for (size of sizes; track size) {
+              <button 
+                class="size-btn" 
+                [class.size-btn-active]="selectedSize === size"
+                (click)="selectSize(size)">
+                {{ size }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="details-divider"></div>
+
+        <!-- Actions: Quantity + Add to Cart -->
+        <div class="details-actions">
+          <div class="quantity-selector">
+            <button (click)="decreaseQty()">-</button>
+            <span>{{ quantity }}</span>
+            <button (click)="increaseQty()">+</button>
+          </div>
+
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Rating & Reviews Section Component -->
+    <app-product-reviews></app-product-reviews>
+
+    <!-- YOU MIGHT ALSO LIKE Section -->
+    <section class="related-products">
+      <h2 class="related-title">YOU MIGHT ALSO LIKE</h2>
+
+      <div class="related-grid">
+        @for (item of relatedProducts; track item.id) {
+          <app-product-card [product]="item"></app-product-card>
+        }
+      </div>
+    </section>
+  }
+</div>
